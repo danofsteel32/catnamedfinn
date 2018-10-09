@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="container">
+
+  <div class="page-header">
+  	<h1>Home</h1>
+  </div>
+
+  <div class="row" id="home_page_row">
+  	<div class="col-sm-8" id="home_page_img">
+  		<!-- <img class="img-responsize" src="{{url_for('static', filename='img/gallery/home_pic.jpg', width=750, height=750, quality=50)}}"> -->
+  		<img class="img-responsive" src="static/img/home_pic.jpg">
+  	</div>
+  	<div>
+
+  	<div class="col-sm-4" id="home_page_panel">
+	  <div class="panel panel-default">
+	  	<div class="panel-body">
+	  		<p>
+	  			<b><big>Hello my name is Finn and I am an aspiring cat model.
+	  			My dream is to make it to the big time, I wanna be the 
+	  			cat you see in all those cat food commercials on Animal Planet.
+	  			If you are a talent agent and you like what you see head on over
+	  			to the contact page and send me an email.<big></b>
+	  		</p>
+	  		<p><b><i>Professional Inquires Only</i><b></p>
+	  	</div>
+	  </div>
+	</div>
+	</div>
+	</div>
+</div>
+{% endblock %}

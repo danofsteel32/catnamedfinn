@@ -1,0 +1,30 @@
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block title %}About{% endblock %}
+
+{% block page_content %}
+<div class="container">
+	<div class="page-header">
+		<h2>About</h2>
+	</div>
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+	  		<p><b><big>Skills and Personality</big></b></p>
+	  		<br>
+	  		<li>Super friendly, definitely not shy</li>
+	  		<li>Doesn't mind being picked up/held</li>
+			<li>Very talkative, active chirper</li>
+			<li>Loves being center of attention</li>
+			<li>Soft, Luxurious fur</li>
+			<li>Mad cathleticism (jumps really high)</li>
+			<li>Will work for treats</li>
+			<br>
+		</div>
+	</div>
+</div>
+{% endblock %}

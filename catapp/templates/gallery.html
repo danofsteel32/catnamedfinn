@@ -1,0 +1,95 @@
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block page_content %}
+<div class="container">
+	<div class="page-header">
+		<h2>Gallery</h2>
+	</div>
+	<div id="gallery_div">
+	</div>
+
+<script type="text/javascript">
+function create_row_divs() {
+	let img_count = 0;
+	let row_count = 0;
+	{% for image in img_list %}
+		img_count ++;
+
+		if (img_count % 3 == 0) {
+			row_count ++;
+			let row_id = "row" + row_count.toString();
+			var row_tag = document.createElement("div");
+			row_tag.setAttribute("class", "row");
+			row_tag.setAttribute("id", row_id);
+			document.getElementById("gallery_div").appendChild(row_tag);
+		}
+	{% endfor %}
+}
+
+</script> 
+<script type="text/javascript">
+function create_col_divs() {
+	var rows_list = document.getElementById("gallery_div").getElementsByClassName("row");
+	var num_rows = rows_list.length;
+
+	for (i = 0; i < num_rows; i ++) {
+		var col_tag1 = document.createElement("div");
+		col_tag1.setAttribute("class", "col-md-4"); 
+		var col_tag2 = document.createElement("div");
+		col_tag2.setAttribute("class", "col-md-4");
+		var col_tag3 = document.createElement("div");
+		col_tag3.setAttribute("class", "col-md-4");
+
+		rows_list[i].appendChild(col_tag1);
+		rows_list[i].appendChild(col_tag2);
+		rows_list[i].appendChild(col_tag3);
+	}
+}
+</script>
+<script type="text/javascript">
+function create_img_elements() {
+	thumb_array = [];
+	{% for img in img_list %}
+		var img = "{{ img }}";
+		var path_to = "static/img/gallery/";
+		var img_src = path_to + img;
+
+		var thumb_tag = document.createElement("div");
+		thumb_tag.setAttribute("class", "thumbnail");
+
+		var href_tag = document.createElement("a");
+		href_tag.setAttribute("href", img_src);
+		href_tag.setAttribute("data-toggle", "modal");
+
+		var img_tag = document.createElement("img");
+		img_tag.setAttribute("src", img_src);
+		img_tag.setAttribute("style", "width: 100%");
+
+		href_tag.appendChild(img_tag);
+		thumb_tag.appendChild(href_tag);
+
+		thumb_array.push(thumb_tag)
+
+	{% endfor %}
+	var cols_list = document.getElementById("gallery_div").getElementsByClassName("col-md-4");
+	for (i = 0; i < cols_list.length; i ++) {
+		cols_list[i].appendChild(thumb_array[i]);
+	}
+}
+</script>
+<script type="text/javascript">
+function main() {
+	create_row_divs();
+	create_col_divs();
+	create_img_elements();
+}
+
+main();
+</script>
+</div>
+{% endblock %}

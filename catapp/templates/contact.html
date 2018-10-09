@@ -1,0 +1,21 @@
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block page_content %}
+<div class="container">
+	<div class="page-header">
+		<h2>Contact</h2>
+	</div>
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+	  		<br>
+	  		<p><b><big>Email: finn@catnamedfinn.com</big></b></p>
+	  		<br>
+	  	</div>
+	</div>
+</div>
+{% endblock %}
